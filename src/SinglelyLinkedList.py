@@ -13,13 +13,10 @@ class LinkedList :
         self.head = None
         self.size = 0 
     
-    def Append(self, value) -> None : 
-        prevNode : Node = self.head 
+    def Add(self, value) -> None : 
         newNode : Node = Node(value)
-        if prevNode : 
-            prevNode.next = newNode
-
-        newNode.next = None
+        newNode.next = self.head
+        self.head = newNode
         self.size = self.size + 1 
 
     def Delete(self, value) : 
@@ -44,9 +41,10 @@ class LinkedList :
         currentNode : Node = self.head 
         prevNode : Node = None
 
-        for i in range(index) : 
+        i = 0
+        while (index > i) : 
             prevNode = currentNode
-            currentNode = currentNode.next 
+            currentNode = currentNode.next
         
         if (prevNode) :
             prevNode.next = currentNode.next
