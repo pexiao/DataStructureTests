@@ -14,12 +14,14 @@ class LinkedList :
         self.size = 0 
     
     def Add(self, value) -> None : 
+        # Adding a node with a value 
         newNode : Node = Node(value)
         newNode.next = self.head
         self.head = newNode
         self.size = self.size + 1 
 
     def Delete(self, value) -> None : 
+        # Deleting a node with a specific value 
         currentNode : Node = self.head 
         prevNode : Node = None 
         while(currentNode) :
@@ -32,8 +34,9 @@ class LinkedList :
                 return 
             prevNode = currentNode
             currentNode = currentNode.next 
-
+        # Nothing happens if the node is not found 
     def Contains(self, value) -> bool : 
+        # Finding if the list contains a value 
         currentNode : Node = self.head 
         while(currentNode) : 
             if (value == currentNode.data) : 
@@ -42,6 +45,7 @@ class LinkedList :
         return False 
     
     def Change(self, originalValue, newValue) -> None : 
+        # Swapping the value of a particular node 
         currentNode : Node = self.head
         while(currentNode) : 
             if (originalValue == currentNode.data) : 
