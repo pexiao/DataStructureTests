@@ -1,6 +1,6 @@
+from typing import TypeVar, Generic, List, Optional
 
-from threading import currentThread
-
+T = TypeVar('T')
 
 class Node : 
     def __init__(self, data) -> None:
@@ -19,7 +19,7 @@ class LinkedList :
         self.head = newNode
         self.size = self.size + 1 
 
-    def Delete(self, value) : 
+    def Delete(self, value) -> None : 
         currentNode : Node = self.head 
         prevNode : Node = None 
         while(currentNode) :
@@ -33,23 +33,20 @@ class LinkedList :
             prevNode = currentNode
             currentNode = currentNode.next 
 
-    def RemoveAt(self, index : int) : 
-        if (index >= self.size or index < 0) : 
-            print("Cannot be removed due to index out of bounds")
-            return 
-
+    def Contains(self, value) -> bool : 
         currentNode : Node = self.head 
-        prevNode : Node = None
-
-        i = 0
-        while (index > i) : 
-            prevNode = currentNode
+        while(currentNode) : 
+            if (value == currentNode.data) : 
+                return True
             currentNode = currentNode.next
-        
-        if (prevNode) :
-            prevNode.next = currentNode.next
-        currentNode.next = None 
-        currentNode.data = None 
+        return False 
+    
+    def Change(self, originalValue, newValue) -> None : 
+        currentNode : Node = self.head
+        while(currentNode) : 
+            if (originalValue == currentNode.data) : 
+                currentNode.data = newValue
+            currentNode = currentNode.next 
 
     def Size(self) -> int:
         return self.size 
